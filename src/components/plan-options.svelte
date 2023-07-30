@@ -54,6 +54,13 @@
         padding: .4rem 1rem;
         margin-bottom: 15px;
 
+        @media (min-width: 768px) {
+            min-height: unset;
+            height: unset;
+            padding: 1rem;
+        
+        }
+
         &__price {
             grid-row: 2/3;
             align-self: start;
@@ -87,7 +94,7 @@
     }
 
     .switch-div {
-        margin: 2rem auto;
+        margin: 2rem auto 0;
         display: flex;
         justify-content: center;
         align-items: center;

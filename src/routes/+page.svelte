@@ -6,6 +6,12 @@
     import FinishingUp from '../components/finishing-up.svelte';
 
     let currentStep = 0;
+    let steps = [
+        {number: 0, title: 'your info'},
+        {number: 1, title: 'select plan'},
+        {number: 2, title: 'Add-ons'},
+        {number: 3, title: 'summary'}
+    ]
 
     const handleNextStep = () => {
         currentStep++
@@ -17,8 +23,12 @@
 
 <main class="multi-step-form">
     <section class='sequence'>
-        {#each [0 ,1, 2, 3] as number}
-            <button class='sequence__btn' on:click={() => currentStep = number}>{number + 1}</button>
+        {#each steps as step}
+            <div>
+                <button class='sequence__btn' on:click={() => currentStep = step.number}>{step.number + 1}</button>
+                <h3 class="sequence__step">step {step.number + 1}</h3>
+                <span class="sequence__title">{step.title}</span>
+            </div>
         {/each}
     </section>
 
@@ -72,6 +82,18 @@
         background-size: contain;
         padding: 1.2rem;
         padding-top: 0;
+
+        @media (min-width: 768px) {
+            background: none;
+            background-color: var(--white);
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            margin: auto;
+            margin-top: 5rem;
+            max-width: 58.63rem;
+            width: 90%;
+        }
     }
 
     h2{
@@ -88,6 +110,27 @@
         justify-content: center;
         padding-top: 2rem;
 
+        @media (min-width: 768px) {
+            grid-row: 1/3;
+            background: url('/images/bg-sidebar-desktop.svg') no-repeat;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            flex-direction: column;
+            justify-content: start;
+            max-width: 270px;
+            width: 100%;
+            padding: 2rem 1.5rem;
+
+            div {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                grid-template-rows: repeat(2, auto);
+                column-gap: 20px;
+                row-gap: 5px;
+            }
+        }
+
         &__btn{
             background-color: transparent;
             border-radius: 50%;
@@ -99,7 +142,38 @@
             &:not(:last-child){
                 margin-right: .8rem;
             }
+
+            @media (min-width: 768px){
+                width: 48px;
+                grid-row: 1/3;
+
+                &:not(:last-child){
+                    margin-right: 0;
+                }   
+            }
         }
+
+        &__step, &__title {
+            display: none;
+
+            @media (min-width: 768px){
+                display: block;
+                color: var(--alabaster);
+                font-size: .8rem;
+                text-transform: uppercase;
+            }
+        }
+
+        &__step{
+            color: var(--light-gray);
+            font-weight: 400;
+            align-self: end;
+        }
+
+        &__title {
+            font-weight: 600;
+        }
+
     }
 
     form{
@@ -110,6 +184,13 @@
         border-radius: 20px;
         padding: 2rem 1.5rem;
         row-gap: 20px;
+
+        
+        @media (min-width: 768px) {
+            margin-top: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
     }
     .icon-wrapper{
         height: 60px;
@@ -145,6 +226,12 @@
         background-color: var(--alabaster);
         width: 100%;
         padding: 1rem;
+
+        
+        @media (min-width: 768px) {
+            position: relative;
+            grid-column: 2/3;
+        }
         
         button {
             border: none;

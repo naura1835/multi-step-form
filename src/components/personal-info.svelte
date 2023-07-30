@@ -21,9 +21,10 @@
         margin-bottom: .2rem;
     }
     input{
+        background-color: var(--alabastar);
         border: 1px solid var(--cool-gray);
         border-radius: 5px;
-        max-width: 290px;
+        max-width: 440px;
         width: 100%;
         height: 38px;
         margin-bottom: 1.2rem;
