@@ -38,7 +38,18 @@
             <Heading {currentStep} />
             <FinishingUp />
         {:else}
-        <p>Thank you</p>
+            <div class="icon-wrapper">
+                <div class="icon-wrapper__inner">
+                    <img src="/images/icon-checkmark.svg" alt="checkmark" />
+                </div>
+            </div>
+            <h2>Thank you!</h2>
+            <p>Thanks for confirming your subscription! 
+                we hope you have fun using our platform.
+                If you ever need support,
+                please feel free to contact us at
+                support@loremgaming.com
+            </p>
         {/if}
     </form>
 
@@ -62,7 +73,15 @@
         padding: 1.2rem;
         padding-top: 0;
     }
-    
+
+    h2{
+        color: var(--marine-blue);
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+
     .sequence{
         display: flex;
         row-gap: 20px;
@@ -84,24 +103,81 @@
     }
 
     form{
+        display: flex;
+        flex-direction: column;
         margin-top: 1.4rem;
         background-color: var(--alabaster);
         border-radius: 20px;
         padding: 2rem 1.5rem;
+        row-gap: 20px;
+    }
+    .icon-wrapper{
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background-color: var(--strawberry-red);
+        display: grid;
+        place-items: center;
+        margin: 0 auto;
+
+        &__inner {
+            height: 30px;
+            width: 30px;
+            border-radius: inherit;
+            background-color: var(--white);
+            display: inherit;
+            place-items: inherit;
+
+            img {
+                height: 15px;
+                width: 15px;
+                object-fit: cover;
+            }
+        }
     }
 
     .submit__btns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         position: fixed;
         bottom: 0;
         left: 0;
         background-color: var(--alabaster);
         width: 100%;
         padding: 1rem;
+        
+        button {
+            border: none;
+            border-radius: 5px;
+            display: grid;
+            width: 6.125rem;
+            height: 2.5rem;
+            outline: none;
+            place-items: center;
+            text-transform: capitalize;
+        }
     }
+    .submit__btn {
+        &--next {
+            background-color: var(--marine-blue);
+            color: var(--alabaster);
+            grid-column: 2/3;
+            justify-self: end;
+        }
 
-    .submit__btn--next {
-        background-color: var(--marine-blue);
-        color: var(--alabaster);
+        &--go-back {
+            background-color: transparent;
+            color: var(--cool-gray);
+            grid-column: 1/2;
+            justify-self: start;
+        }
+
+        &--confirm {
+            background-color: var(--purplish-blue);
+            color: var(--white);
+            grid-column: 2/3;
+            justify-self: end;
+        }
     }
     
 </style>

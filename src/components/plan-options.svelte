@@ -1,13 +1,13 @@
 <script>
     import { plan } from '../store.js'
-
+    
     let yearly = false
     let plans = [
         {name: 'arcade', img: 'icon-arcade.svg', price: 9},
         {name: 'advanced', img: 'icon-advanced.svg', price: 12},
         {name: 'pro', img: 'icon-pro.svg', price: 15},
     ]
-    
+
     $: multiplyBy = yearly ? 10 : 1
 
     // @ts-ignore
@@ -21,15 +21,16 @@
 
 <section>
     {#each plans as {name, img, price}}
-        <label>
+        <label class="plan">
             <input type="radio" name="billing-plan" value={name} on:change={()=> handleChange(name, price, multiplyBy)} />
             <img src={`/images/${img}`} alt={name}/>
-            {name}
-            <span>${price * multiplyBy}/{multiplyBy == 1 ? 'mo': 'yr'}</span>
-            <span>{multiplyBy == 10 ? '2 months free': ''}</span>
+            <h4>{name}</h4>
+            <span class="plan__price">${price * multiplyBy}/{multiplyBy == 1 ? 'mo': 'yr'}</span>
+            <span class="plan__freebie">{multiplyBy == 10 ? '2 months free': ''}</span>
         </label>
     {/each}
-    <div>
+
+    <div class="switch-div">
         <span>Monthly</span>
         <label class="switch">
             <input type="checkbox" on:change={() => yearly = !yearly} />
@@ -40,20 +41,64 @@
 </section>
 
 <style lang="scss">
-    label {
-        display: block;
+    .plan {
+        border: 1px solid var(--light-gray);
+        border-radius: 8px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+        column-gap: 0.75rem;
+        min-height: 4.5rem;
+        height: 100%;
+        padding: .4rem 1rem;
+        margin-bottom: 15px;
+
+        &__price {
+            grid-row: 2/3;
+            align-self: start;
+        }
+
+        &__freebie {
+            color: var(--marine-blue);
+            font-size: 0.9rem;
+        }
     }
+
+    img {
+        grid-row: 1/5;
+        align-self: center;
+    }
+
+    h4 {
+        color: var(--marine-blue);
+        text-transform: capitalize;
+        grid-row: 1/2;
+        align-self: end;
+    }
+
+    
+
     input[type='radio'] {
         -webkit-appearance: none;
         appearance: none;
         background-color: var(--alabaster);
         margin: 0;
     }
+
+    .switch-div {
+        margin: 2rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
     .switch {
         position: relative;
         display: inline-block;
-        width: 60px;
-        height: 34px;
+        width: 48px;
+        height: 24px;
 
         & input {
             -webkit-appearance: none;
@@ -78,8 +123,8 @@
         &:before {
             position: absolute;
             content: "";
-            height: 26px;
-            width: 26px;
+            height: 16px;
+            width: 16px;
             left: 4px;
             bottom: 4px;
             background-color: var(--alabaster);

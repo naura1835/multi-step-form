@@ -29,7 +29,10 @@ body {
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--cool-gray);
   background-color: var(--magnolia);
+}
+p {
+  line-height: normal;
 }

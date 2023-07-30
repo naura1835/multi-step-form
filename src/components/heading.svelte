@@ -13,11 +13,17 @@
 
 </script>
 
-<h2>{currentHeading}</h2>
-<p>{currentSubHeading}</p>
+<section>
+    <h2>{currentHeading}</h2>
+    <p>{currentSubHeading}</p>
+</section>
 
 <style lang="scss">
-    h2{
+    h2 {
         color: var(--marine-blue);
+        margin-bottom: 1.25rem;
+    }
+    p {
+       width: 95%;
     }
 </style>
