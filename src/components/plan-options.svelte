@@ -41,6 +41,15 @@
 </section>
 
 <style lang="scss">
+    section{
+        
+        @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            column-gap: 20px;
+        }
+    }
     .plan {
         border: 1px solid var(--light-gray);
         border-radius: 8px;
@@ -55,8 +64,11 @@
         margin-bottom: 15px;
 
         @media (min-width: 768px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 2fr repeat(2, auto);
             min-height: unset;
-            height: unset;
+            height: 9.88rem;
+            width: 8.44rem;
             padding: 1rem;
         
         }
@@ -64,6 +76,10 @@
         &__price {
             grid-row: 2/3;
             align-self: start;
+
+            @media (min-width: 768px) {
+                grid-row: 3/4;
+            }
         }
 
         &__freebie {
@@ -75,6 +91,11 @@
     img {
         grid-row: 1/5;
         align-self: center;
+        
+        @media (min-width: 768px) {
+            grid-row: 1/2;
+            align-self: start;
+        }
     }
 
     h4 {
@@ -82,6 +103,11 @@
         text-transform: capitalize;
         grid-row: 1/2;
         align-self: end;
+
+        
+        @media (min-width: 768px) {
+            grid-row: 2/3;
+        }
     }
 
     
@@ -99,6 +125,14 @@
         justify-content: center;
         align-items: center;
         gap: 20px;
+        
+        @media (min-width: 768px) {
+            grid-column: 1/4;
+            background-color: var(--magnolia);
+            border-radius: 8px;
+            width: 100%;
+            height: 44px;
+        }
     }
 
     .switch {

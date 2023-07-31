@@ -48,18 +48,20 @@
             <Heading {currentStep} />
             <FinishingUp />
         {:else}
-            <div class="icon-wrapper">
-                <div class="icon-wrapper__inner">
-                    <img src="/images/icon-checkmark.svg" alt="checkmark" />
+            <!-- <div class="thank-you"> -->
+                <div class="icon-wrapper">
+                    <div class="icon-wrapper__inner">
+                        <img src="/images/icon-checkmark.svg" alt="checkmark" />
+                    </div>
                 </div>
-            </div>
-            <h2>Thank you!</h2>
-            <p>Thanks for confirming your subscription! 
-                we hope you have fun using our platform.
-                If you ever need support,
-                please feel free to contact us at
-                support@loremgaming.com
-            </p>
+                <h2>Thank you!</h2>
+                <p>Thanks for confirming your subscription! 
+                    we hope you have fun using our platform.
+                    If you ever need support,
+                    please feel free to contact us at
+                    support@loremgaming.com
+                </p>
+            <!-- </div> -->
         {/if}
     </form>
 
@@ -93,6 +95,14 @@
             margin-top: 5rem;
             max-width: 58.63rem;
             width: 90%;
+            min-height: 500px;
+            height: 100%;
+        }
+
+        
+        @media (min-width: 1024px) {
+            width: 100%;
+            column-gap: 100px;
         }
     }
 
@@ -190,8 +200,12 @@
             margin-top: 0;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
+            justify-content: center;
         }
+
     }
+
+
     .icon-wrapper{
         height: 60px;
         width: 60px;

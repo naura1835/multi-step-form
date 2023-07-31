@@ -45,6 +45,11 @@
         padding: .6rem 1rem;
         margin-bottom: 15px;
 
+        @media (min-width: 768px) {
+            height: 4.5rem;
+            column-gap: 30px;
+        }
+
 
         input[type='checkbox'] {
             border-color: var(--cool-gray);
