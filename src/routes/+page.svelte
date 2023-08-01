@@ -27,7 +27,7 @@
     <section class='sequence'>
         {#each steps as step}
             <div>
-                <button class='sequence__btn' on:click={() => currentStep = step.number}>{step.number + 1}</button>
+                <button class={currentStep === step.number ? 'sequence__btn sequence__btn--active' : 'sequence__btn'} on:click={() => currentStep = step.number}>{step.number + 1}</button>
                 <h3 class="sequence__step">step {step.number + 1}</h3>
                 <span class="sequence__title">{step.title}</span>
             </div>
@@ -151,6 +151,7 @@
             color: var(--alabaster);
             height: 48px;
             aspect-ratio: 1;
+            font-weight: 600;
 
             &:not(:last-child){
                 margin-right: .8rem;
@@ -163,6 +164,12 @@
                 &:not(:last-child){
                     margin-right: 0;
                 }   
+            }
+
+            &--active {
+                background-color: var(--pastel-blue);
+                border-color: var(--pastel-blue);
+                color: var(--marine-blue);
             }
         }
 

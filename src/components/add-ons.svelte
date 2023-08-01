@@ -1,6 +1,7 @@
 <script>
     import { plan, addOn } from '../store.js'
 
+    let isActive = ''
     let addOns = [
         {service: 'Online service', detail: 'Access to multiplayer games', price: 1},
         {service: 'Larger storage', detail: 'Extra 1TB of cloud service', price: 2},
@@ -11,6 +12,8 @@
 
     // @ts-ignore
     const handleAddOn = (addOnService, price) => {
+        isActive = addOnService
+
         const newAddOn = {service: addOnService, price: price}
         const doesExists = $addOn.find((item) => item.service === addOnService)
         
@@ -31,7 +34,7 @@
 
 <section>
     {#each addOns as addOnItem}
-        <div class="add-on">
+        <div class={$addOn.find((item) => item.service == addOnItem.service) ? "add-on is-active": "add-on"}>
             <input type="checkbox" bind:group={localAddOns} value={addOnItem.service} name="add-on" id={addOnItem.service} on:change={() => handleAddOn(addOnItem.service, addOnItem.price)} /> 
             <label for={addOnItem.service}>{addOnItem.service}</label>
             <p>{addOnItem.detail}</p>
@@ -83,5 +86,10 @@
             place-self: center;
         }
 
+    }
+    
+    .is-active {
+        border-color: var(--purplish-blue);
+        background-color: var(--magnolia);
     }
 </style>

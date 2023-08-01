@@ -1,6 +1,7 @@
 <script>
     import { plan } from '../store.js'
     
+    let isActive = 'arcade'
     let yearly = $plan.planType == 1 ? false : true
     let plans = [
         {name: 'arcade', img: 'icon-arcade.svg', price: 9},
@@ -20,13 +21,14 @@
     const handleChange = (planName, planPrice, planType) => {
         
         $plan = {planName, planPrice, planType}
+        isActive = planName
     }
     
 </script>
 
 <section>
     {#each plans as {name, img, price}}
-        <label class="plan" for={name}>
+        <label class={isActive === name ? 'is-active plan' : 'plan'} for={name}>
             <input type="radio" name="billing-plan" id={name} value={name} bind:group={currentPlan} on:change={()=> handleChange(name, price, multiplyBy)} />
             <img src={`/images/${img}`} alt={name}/>
             <h4>{name}</h4>
@@ -93,6 +95,10 @@
         }
     }
 
+    .is-active {
+        border-color: var(--purplish-blue);
+        background-color: var(--magnolia);
+    }
     img {
         grid-row: 1/5;
         align-self: center;
