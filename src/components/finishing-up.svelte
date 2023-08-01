@@ -2,7 +2,7 @@
 // @ts-nocheck
     import { billingDetail } from "../store.js";
     
-    let total;
+    let planTotal, total;
 
     let addOnTotal = $billingDetail.addOn.reduce((total, current) => {
         const { price } = current
@@ -10,8 +10,8 @@
 
         return total
     }, 0)
-
-    total = $billingDetail.plan.planPrice + addOnTotal
+    planTotal = $billingDetail.plan.planPrice * $billingDetail.plan.planType
+    total = planTotal + addOnTotal
 </script>
 
 <section>
@@ -19,7 +19,7 @@
         <h4>{$billingDetail.plan.planName}(Monthly)</h4>
         <a href="/">Change</a>
     </div>
-    <span>${$billingDetail.plan.planPrice}/{$billingDetail.plan.planType == 1 ? 'mo' : 'yr'}</span>
+    <span>${planTotal}/{$billingDetail.plan.planType == 1 ? 'mo' : 'yr'}</span>
     <hr />
     {#each $billingDetail.addOn as addOn}
         <p>{addOn.service}</p>

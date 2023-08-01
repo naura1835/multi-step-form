@@ -3,7 +3,7 @@ import { derived, writable } from "svelte/store";
 export const name = writable("");
 export const email = writable("");
 export const phoneNumber = writable("");
-export const plan = writable({ planName: "", planType: 0, planPrice: 0 });
+export const plan = writable({ planName: "arcade", planType: 1, planPrice: 9 });
 export const addOn = writable([]);
 
 export const billingDetail = derived(

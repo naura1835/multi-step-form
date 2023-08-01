@@ -1,4 +1,5 @@
 <script>
+    import {plan} from '../store.js'
     import AddOns from '../components/add-ons.svelte';
     import Heading from "../components/heading.svelte";
     import PersonalInfo from '../components/personal-info.svelte';
@@ -19,6 +20,7 @@
     const goBack = () => {
         currentStep--
     }
+    $: console.log($plan)
 </script>
 
 <main class="multi-step-form">
@@ -97,6 +99,7 @@
             width: 90%;
             min-height: 500px;
             height: 100%;
+            padding-top: 1.2rem;
         }
 
         
@@ -198,6 +201,7 @@
         
         @media (min-width: 768px) {
             margin-top: 0;
+            background-color: transparent;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
             justify-content: center;

@@ -1,28 +1,33 @@
 <script>
     import { plan } from '../store.js'
     
-    let yearly = false
+    let yearly = $plan.planType == 1 ? false : true
     let plans = [
         {name: 'arcade', img: 'icon-arcade.svg', price: 9},
         {name: 'advanced', img: 'icon-advanced.svg', price: 12},
         {name: 'pro', img: 'icon-pro.svg', price: 15},
     ]
+    let currentPlan = plans[0].name
 
     $: multiplyBy = yearly ? 10 : 1
 
+    $: {
+        if(yearly == true) $plan.planType = 10
+        if(yearly == false) $plan.planType = 1
+    }
+
     // @ts-ignore
     const handleChange = (planName, planPrice, planType) => {
-        const planObj = {planName, planPrice, planType}
-        // @ts-ignore
-        plan.update((obj) =>({...obj, ...planObj}))
+        
+        $plan = {planName, planPrice, planType}
     }
     
 </script>
 
 <section>
     {#each plans as {name, img, price}}
-        <label class="plan">
-            <input type="radio" name="billing-plan" value={name} on:change={()=> handleChange(name, price, multiplyBy)} />
+        <label class="plan" for={name}>
+            <input type="radio" name="billing-plan" id={name} value={name} bind:group={currentPlan} on:change={()=> handleChange(name, price, multiplyBy)} />
             <img src={`/images/${img}`} alt={name}/>
             <h4>{name}</h4>
             <span class="plan__price">${price * multiplyBy}/{multiplyBy == 1 ? 'mo': 'yr'}</span>
@@ -33,7 +38,7 @@
     <div class="switch-div">
         <span>Monthly</span>
         <label class="switch">
-            <input type="checkbox" on:change={() => yearly = !yearly} />
+            <input type="checkbox" bind:checked={yearly} />
             <span class="slider"></span>
         </label>
         <span>Yearly</span>

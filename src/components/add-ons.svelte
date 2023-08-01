@@ -7,6 +7,8 @@
         {service: 'Customizable profile', detail: 'Custom theme on your profile', price: 2}
     ]
 
+    let localAddOns = $addOn.map((item) => item.service)
+
     // @ts-ignore
     const handleAddOn = (addOnService, price) => {
         const newAddOn = {service: addOnService, price: price}
@@ -18,18 +20,22 @@
                 return [...arr, newAddOn]
             })
             // @ts-ignore
+        }else {
+            const unFilteredArr = [...$addOn]
+            const filteredArr = unFilteredArr.filter((item) => item.service !== addOnService)
+            $addOn = filteredArr //uses set internally
         }
     }
 
 </script>
 
 <section>
-    {#each addOns as {service, detail, price}}
+    {#each addOns as addOnItem}
         <div class="add-on">
-            <input type="checkbox" name="add-on" id={service} value={service} on:change={() => handleAddOn(service, price)} />
-            <label for={service}>{service}</label>
-            <p>{detail}</p>
-            <span> +${price * $plan.planType}/{ $plan.planType == 1 ? 'mo' : 'yr'}</span>
+            <input type="checkbox" bind:group={localAddOns} value={addOnItem.service} name="add-on" id={addOnItem.service} on:change={() => handleAddOn(addOnItem.service, addOnItem.price)} /> 
+            <label for={addOnItem.service}>{addOnItem.service}</label>
+            <p>{addOnItem.detail}</p>
+            <span> +${addOnItem.price * $plan.planType}/{ $plan.planType == 1 ? 'mo' : 'yr'}</span>
         </div>    
     {/each} 
 </section>
