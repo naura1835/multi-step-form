@@ -20,7 +20,6 @@
     const goBack = () => {
         currentStep--
     }
-    $: console.log($plan)
 </script>
 
 <main class="multi-step-form">
@@ -80,7 +79,8 @@
     </div>
 </main>
 
-<style lang="scss">   
+<style lang="scss">
+    @import '../style.css';   
     main{
         background: url('/images/bg-sidebar-mobile.svg') no-repeat;
         background-size: contain;
