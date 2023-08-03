@@ -253,8 +253,10 @@
 
         
         @media (min-width: 768px) {
+            background-color: var(--white);
             position: relative;
             grid-column: 2/3;
+            
         }
         
         button {
