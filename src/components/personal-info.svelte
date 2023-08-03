@@ -13,8 +13,6 @@
 </section>
 
 <style lang="scss">
-    
-    @import '../style.css';
     label {
         display: block;
         color: var(--marine-blue);

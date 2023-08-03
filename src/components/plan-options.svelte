@@ -48,7 +48,6 @@
 </section>
 
 <style lang="scss">
-    @import '../style.css';
     section{
         
         @media (min-width: 768px) {

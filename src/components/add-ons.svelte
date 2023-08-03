@@ -44,8 +44,6 @@
 </section>
 
 <style lang="scss">
-    
-    @import '../style.css';
     .add-on {
         border: 1px solid var(--light-gray);
         border-radius: 8px;

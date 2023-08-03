@@ -19,7 +19,6 @@
 </section>
 
 <style lang="scss">
-    @import '../style.css';
     h2 {
         color: var(--marine-blue);
         margin-bottom: 1.25rem;

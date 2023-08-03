@@ -33,7 +33,6 @@
 </div>
 
 <style lang="scss">
-    @import '../style.css';
     section {
         background-color: var(--magnolia);
         border-radius: 8px;

@@ -80,7 +80,6 @@
 </main>
 
 <style lang="scss">
-    @import '../style.css';   
     main{
         background: url('/images/bg-sidebar-mobile.svg') no-repeat;
         background-size: contain;
